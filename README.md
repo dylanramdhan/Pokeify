@@ -2,7 +2,7 @@
 
 
 <p align="center">
-  <img src="./README/pokemon.gif" alt="animated" />
+  <img src="./README/pokemon.gif" alt="animated" width="250" height="250" />
 </p>
 
 
