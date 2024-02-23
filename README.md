@@ -7,7 +7,7 @@
 
 
 <p align="center">
-  <img src="./README/whodatpokemon.png" alt="animated" width="350" height="500" />
+  <img src="./README/whodatpokemon.png" alt="animated" width="350" height="350" />
 </p>
 
 ## Description
