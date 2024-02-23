@@ -6,6 +6,7 @@
 </p>
 
 
-<img p img = "WHO'S THAT POKEMON??" >
+<span style="font-size:1.5em;">WHO'S THAT POKEMON?</span>
 
+## Description
 In the Pokeify, you can easily find your favorite type of Pokemon, and favorite types of music!
