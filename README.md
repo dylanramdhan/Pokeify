@@ -6,7 +6,9 @@
 </p>
 
 
-<span style="font-size:1.5em;">WHO'S THAT POKEMON?</span>
+<p align="center">
+  <img src="./README/whodatpokemon.png" alt="animated" width="500" height="350" />
+</p>
 
 ## Description
-In the Pokeify, you can easily find your favorite type of Pokemon, and favorite types of music!
+In the Pokeify, you can easily find your favorite type of Pokemon, and favorite playlists of music that you may like!
