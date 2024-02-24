@@ -7,7 +7,7 @@
 
 
 <p align="center">
-  <img src="./README/sign.png" size="50" />
+  <img src="./README/sign.png" />
 </p>
 
 ## Description
