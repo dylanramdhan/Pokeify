@@ -1,50 +1,67 @@
-Q2 Project Description
+#Q1 Repo Link
+
+#Q2 Project Description:
 - My project will find a spotify playlist based on the types of the pokemon that the user input. This will be done through the passing the information from the POkemon API to the spotify api to find an existing playlist to be demonstrated. The database we will use is MySQL to store information about the user, their saved pokemon and playlists. 
 
-Q3 Product Requirements
 
-Q3.1 Goal
+
+#Q3 Product Requirements
+
+##Q3.1 Goal
 - Create easily navigable web interface that allows the user to find a spotify playlist based on the Pokemon type 
 
-Q3.2 Non-Goal
+##Q3.2 Non-Goal
 - The website should look aesthetically appealing and the user experience should be smooth (e.t.c. transition from textbox to spotify playlist). 
 
-Q3.3 Non-functional requirement 1
+##Q3.3 Non-functional requirement 1
 - Usability
-Q3.4 Functional requirement 1.1
+
+##Q3.4 Functional requirement 1.1
 - Smooth experience via React routing to allow users to navigate between pages.
-Q3.5 Functional requirement 1.2
+
+##Q3.5 Functional requirement 1.2
 - Efficient communication between front-end and back-end with React and Express. 
 
-Q3.6 Non-functional requirement 2
+##Q3.6 Non-functional requirement 2
 - Authentication
-Q3.7 Functional requirement 2.1
+
+##Q3.7 Functional requirement 2.1
 - There will be OAuth authentication where the user can login in 
-Q3.8 Functional requirement 2.2
+
+##Q3.8 Functional requirement 2.2
 - Allow users to log-in and save generated playlists to their account through the database. 
 
 
-Q4 Project Management
 
-Q4.1 Theme
+
+#Q4 Project Management
+
+#Q4.1 Theme
 - Delight the user with a playlist corresponding to the type(s) of a Pokemon they would like to search.
-Q4.2 Epic
+
+##Q4.2 Epic
 - What both user stories have in common is that both users aim to learn more about their favorite pokemon and about their music tastes.
 
-Q4.3 User story 1
+##Q4.3 User story 1
 - “As a new user, I am worried about the security of my data on the internet.” 
-Q4.4 Task 1
+
+##Q4.4 Task 1
 - To solve this user’s problem, security measures need to be implemented to protect user data.
-Q4.5 Ticket 1.1
+
+##Q4.5 Ticket 1.1
 - Implement oAuth
-Q4.6 Ticket 1.2
+
+##Q4.6 Ticket 1.2
 - Safely store env variables
 
-Q4.7 User story 2
+##Q4.7 User story 2
 “My name is Lola and I love pokemon and horoscopes. I believe that my element is fire because my favorite pokemon is charmander (Their element is fire). I’m not an avid music listener so I don’t know where to start (which songs to listen to). Hopefully I can find some good songs from this website!”
-Q4.8 Task 2
+
+##Q4.8 Task 2
 To solve Lola’s problem, we will create a playlist with all songs related to, but not limited to the keyword “fire,” and allow her to save these songs for later reference.
-Q4.9 Ticket 2.1
+
+##Q4.9 Ticket 2.1
 Implement API calls.
-Q4.10 Ticket 2.2
+
+##Q4.10 Ticket 2.2
 Implement DB to store user information.
