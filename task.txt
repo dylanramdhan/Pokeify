@@ -1,0 +1,12 @@
+1. make an interface (Jason) 
+
+2. Know how our api works (mac(spotify) and daniel (Pokeify)) 
+    Have you identified your external APIs and created the appropriate authentication tokens?    
+    Can you successfully generate a response from your APIs?
+
+3. (dylan)
+    Identify your DB 
+    Have you been able to query it in your back end technology?
+
+2/3 by Friday 
+
