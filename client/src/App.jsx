@@ -1,11 +1,18 @@
-import Home from "./home /home"
+
+=======
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/homePage';
+import LoginPage from './pages/LoginPage';
 
 export default function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      This is Pokeify
-      <Home />
-    </h1>
-  )
+    <Router>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route index element={<HomePage />} />
+        <Route path='/login' element={<LoginPage />} />
+      </Routes>
+    </Router>
+  );
 }
 
