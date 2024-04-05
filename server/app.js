@@ -1,8 +1,18 @@
 const express = require("express");
 const axios = require('axios');
-const app = express();
+const cors = require('cors');
 
-app.get("/", function (req, res) {
+const app = express();
+app.use(cors());
+
+
+// Middleware to parse JSON bodies
+app.use(express.json());
+
+// Middleware to parse URL-encoded bodies
+app.use(express.urlencoded({ extended: true }));
+
+app.get("/spotify", function (req, res) {
 
   const query = "Drake";
 
@@ -45,6 +55,11 @@ app.get("/", function (req, res) {
   res.send("Spotify activated :)");
 
 });
+
+app.post("/api/pokemonQuery", function (req, res) {
+  res.send("Pokemon Query activated :)")
+  console.log(req.body)
+})
 // Starting the server. Should this be placed at the top of all other commands?
 app.listen(3000, function () {
   console.log("Server is running on port 3000.")
