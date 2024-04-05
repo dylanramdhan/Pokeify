@@ -1,6 +1,7 @@
 const express = require("express");
 const axios = require('axios');
 const cors = require('cors');
+const { pokemonTypes, pokemonRap, genreToArtists } = require('./global.js')
 
 const app = express();
 app.use(cors());
@@ -56,10 +57,19 @@ app.get("/spotify", function (req, res) {
 
 });
 
-app.post("/api/pokemonQuery", function (req, res) {
+
+
+app.post("/api/pokemonQuery", function async(req, res) {
   res.send("Pokemon Query activated :)")
-  console.log(req.body)
+  const data = req.body.types
+  const type = data[0].type.name
+  const strType = type.charAt(0).toUpperCase() + type.slice(1)
+  const randomArtist = genreToArtists[pokemonRap[strType]][Math.floor(Math.random() * genreToArtists[pokemonRap[strType]].length)]
+  // call the spotify api to get the artist's top tracks.
+  // return it to the client
 })
+
+
 // Starting the server. Should this be placed at the top of all other commands?
 app.listen(3000, function () {
   console.log("Server is running on port 3000.")

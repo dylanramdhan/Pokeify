@@ -27,6 +27,7 @@ export default function ApiQuery() {
                     body: JSON.stringify(data)
                 })
 
+
             } else {
                 alert('Error: You have inputted a wrong Pokemon name. Please try again.')
             }
