@@ -1,13 +1,12 @@
 // Import React
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import OAuth from '../components/OAuth';
+
 
 export default function HomePage() {
-    const navigate = useNavigate()
 
-    const goToLogin = () => {
-        navigate('/login');
-    }
+
+
     return (
         <div className="flex h-screen justify-center items-center bg-cover" style={{ backgroundImage: 'url("https://i.pinimg.com/originals/d2/97/09/d297091ea731d847dc356549925a8460.jpg")' }}>
             <div className='text-center bg-white p-10 rounded-2xl shadow-lg max-w-3xl'>
@@ -25,9 +24,10 @@ export default function HomePage() {
 
                 <section>
                     <h1 className="text-xl font-bold text-yellow-700 mb-2">To Get Started, Please Sign in with your Google Account: </h1>
-                    <button className="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={goToLogin}>
-                        Go to Login Page
+                    <button className="mt-2 text-white font-bold py-2 px-4 rounded-full">
+                        <OAuth></OAuth>
                     </button>
+
                 </section>
             </div>
         </div >

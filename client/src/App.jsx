@@ -1,8 +1,7 @@
 
-=======
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/homePage';
-import LoginPage from './pages/LoginPage';
+import UserPage from './pages/userPage';
 
 export default function App() {
   return (
@@ -10,7 +9,8 @@ export default function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route index element={<HomePage />} />
-        <Route path='/login' element={<LoginPage />} />
+        <Route path='/user' element={<UserPage />} />
+
       </Routes>
     </Router>
   );
