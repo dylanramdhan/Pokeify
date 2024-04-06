@@ -8,10 +8,11 @@ app.use(cors());
 
 
 // Middleware to parse JSON bodies
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 
 // Middleware to parse URL-encoded bodies
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
+
 
 app.get("/spotify", function (req, res) {
 
@@ -60,13 +61,15 @@ app.get("/spotify", function (req, res) {
 
 
 app.post("/api/pokemonQuery", function async(req, res) {
-  res.send("Pokemon Query activated :)")
-  const data = req.body.types
-  const type = data[0].type.name
-  const strType = type.charAt(0).toUpperCase() + type.slice(1)
-  const randomArtist = genreToArtists[pokemonRap[strType]][Math.floor(Math.random() * genreToArtists[pokemonRap[strType]].length)]
+  const { name, types } = req.body
+
+  const pokemonType = types[0].type.name
+  const pokemonStrType = pokemonType.charAt(0).toUpperCase() + pokemonType.slice(1)
+  const randomArtist = genreToArtists[pokemonRap[pokemonStrType]][Math.floor(Math.random() * genreToArtists[pokemonRap[pokemonStrType]].length)]
   // call the spotify api to get the artist's top tracks.
   // return it to the client
+  res.json({ artist: randomArtist, genre: pokemonStrType, name: name })
+
 })
 
 
