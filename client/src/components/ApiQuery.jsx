@@ -35,7 +35,7 @@ export default function ApiQuery() {
     const [artist, setArtist] = useState('')
     const [accessToken, setAccessToken] = useState('')
 
-    const CLIENT_ID = 'f18d386ae31746aea86f3eb2d9cdbad1'
+    const CLIENT_ID = ''
     const CLIENT_SECRET = 'd38e056805f24b1e98a8aefa639ab94b'
 
     const handleChange = (e) => {
@@ -68,8 +68,8 @@ export default function ApiQuery() {
         } catch (e) {
             console.error(e)
         }
-
     }
+
     useEffect(() => {
         getSpotifyAccessToken()
         console.log(accessToken)
