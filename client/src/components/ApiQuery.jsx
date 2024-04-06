@@ -1,8 +1,9 @@
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { pokemonQueryUrl, expressport } from '../utilities/global';
+
 
 const getPokemontoArtist = async (query) => {
     const res = await fetch(pokemonQueryUrl + query)
@@ -32,10 +33,31 @@ const getPokemontoArtist = async (query) => {
 export default function ApiQuery() {
     const [query, setQuery] = useState('')
     const [artist, setArtist] = useState('')
+    const [accessToken, setAccessToken] = useState('')
+
+    const CLIENT_ID = 'f18d386ae31746aea86f3eb2d9cdbad1'
+    const CLIENT_SECRET = 'd38e056805f24b1e98a8aefa639ab94b'
 
     const handleChange = (e) => {
         setQuery(e.target.value)
     }
+
+    const getSpotifyAccessToken = async () => {
+        var authParameters = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'grant_type=client_credentials&client_id=' + CLIENT_ID + '&client_secret=' + CLIENT_SECRET
+
+        }
+
+        fetch('https://accounts.spotify.com/api/token', authParameters)
+            .then(res => res.json())
+            .then(data => setAccessToken(data.access_token))
+    }
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -48,9 +70,12 @@ export default function ApiQuery() {
         }
 
     }
+    useEffect(() => {
+        getSpotifyAccessToken()
+        console.log(accessToken)
+    }, [])
 
 
-    // useEffect to load the table from the database 
     return (
         <div>
             <Box

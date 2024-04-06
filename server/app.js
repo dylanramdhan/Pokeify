@@ -16,12 +16,12 @@ app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 app.get("/spotify", function (req, res) {
 
-  const query = "Drake";
+  const query = "Taylor Swift";
 
   // Mak: set up access token first
   // Follow procedure here to get access_token and refresh_token: https://benwiz.com/blog/create-spotify-refresh-token/
 
-  const access_token = "BQDExkoA-BQDExkoA-mOUZr5tzp2EYeDmuNU5nWO9gm4lZpOWz3q5QNoAxZ2D0r9IVNawd6Fqlm8fO-2_zsg0e_b-eaPPWbF6GsEGXv8X6kl2fkpaRBPfOMDTEn__mLILOqWCuBOmcCdGchmNiTRuD8AHrqbGwaU7mPXqFOR7OBHESb3KqjtDw9I4OxzZS7WTOCbmgDZo2bU-2_zsg0e_b-eaPPWbF6GsEGXv8X6kl2fkpaRBPfOMDTEn__mLILOqWCuBOmcCdGchmNiTRuD8AHBQDExkoA-mOUZr5tzp2EYeDmuNU5nWO9gm4lZpOWz3q5QNoAxZ2D0r9IVNawd6Fqlm8fO-2_zsg0e_b-eaPPWbF6GsEGXv8X6kl2fkpaRBPfOMDTEn__mLILOqWCuBOmcCdGchmNiTRuD8AHrqbGwaU7mPXqFOR7OBHESb3KqjtDw9I4OxzZS7WTOCbmgDZo2bUrqbGwaU7mPXqFOR7OBHESb3KqjtDw9I4OxzZS7WTOCbmgDZo2bU-SIimMwUDn1otadYnh9f1KNNXZ3WdXrk_5_RK4c4";
+  const access_token = "BQCIcRp15VQ4J-h5MAscw8bUHAopmwIWg6NFA6sHrYXdqFI3bfqn-lvRj3U0fbBy88lAiZt0NxYSXdQnEBdzLfPAGOH8wdk6VaASeby1mfQe4Va1BFY";
   const token = "Bearer " + access_token;
   var searchUrl = "https://api.spotify.com/v1/search?q=" + query + "&type=track&limit=4";
 
