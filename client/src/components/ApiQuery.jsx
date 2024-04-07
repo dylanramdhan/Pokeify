@@ -36,8 +36,8 @@ export default function ApiQuery() {
     const [accessToken, setAccessToken] = useState('')
     const [albums, setAlbums] = useState([])
 
-    const CLIENT_ID = 'f18d386ae31746aea86f3eb2d9cdbad1'
-    const CLIENT_SECRET = 'd38e056805f24b1e98a8aefa639ab94b'
+    const CLIENT_ID = ''
+    const CLIENT_SECRET = ''
 
     const handleChange = (e) => {
         setQuery(e.target.value)
