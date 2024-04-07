@@ -3,10 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useEffect, useState } from 'react';
 import { pokemonQueryUrl, expressport } from '../utilities/global';
-
-
-
-
+import Cards from './Cards';
 
 const getPokemontoArtist = async (query) => {
     const res = await fetch(pokemonQueryUrl + query)
@@ -121,18 +118,17 @@ export default function ApiQuery() {
                 autoComplete="off"
                 onSubmit={handleSubmit}
                 onChange={handleChange}
+                className="flex justify-center mb-5"
             >
-                <TextField id="standard-basic" label="Standard" variant="standard" />
-                <Button type="submit" variant="contained" >Text</Button>
+                <TextField id="standard-basic" label="Pokemon Name" />
+                <Button type="submit" variant="contained" >Submit</Button>
             </Box>
 
-            {albums.map(album => {
-                return <div key={album.id}>
-                    <h1>{album.name}</h1>
-                    <img src={album.images[0].url} alt={album.name} />
-                </div>
-            })
-            }
+            <div className="grid grid-cols-3 gap-4 ">
+                {albums.map((album, index) => (
+                    <Cards key={index} name={album.name} url={album.images[0].url} link={album.external_urls.spotify} releaseDate={album.release_date} />
+                ))}
+            </div>
 
         </div>
     )
