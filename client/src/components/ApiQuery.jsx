@@ -39,8 +39,8 @@ export default function ApiQuery() {
     const [accessToken, setAccessToken] = useState('')
     const [albums, setAlbums] = useState([])
 
-    const CLIENT_ID = 'f18d386ae31746aea86f3eb2d9cdbad1'
-    const CLIENT_SECRET = 'd38e056805f24b1e98a8aefa639ab94b'
+    const CLIENT_ID = 'client_id_here'
+    const CLIENT_SECRET = 'client_secret_here'
 
     const handleChange = (e) => {
         setQuery(e.target.value)
@@ -130,6 +130,7 @@ export default function ApiQuery() {
                 return <div key={album.id}>
                     <h1>{album.name}</h1>
                     <img src={album.images[0].url} alt={album.name} />
+                    <a href={album.external_urls.spotify}>LINK TO THE ALBUM</a>
                 </div>
             })
             }
