@@ -2,33 +2,10 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useEffect, useState } from 'react';
-import { pokemonQueryUrl, expressport } from '../utilities/global';
 import Cards from './Cards';
+import { getPokemontoArtist, expressport } from '../utilities/global';
 
-const getPokemontoArtist = async (query) => {
-    const res = await fetch(pokemonQueryUrl + query)
-    if (res.ok) {
-        const data = await res.json()
-        // pass the data to the backend for manipulation 
-        const spotifyRes = await fetch(`${expressport}/api/pokemonQuery`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
 
-        if (spotifyRes.ok) {
-            const spotifyData = await spotifyRes.json()
-            return spotifyData.artist
-        } else {
-            alert('Error: You have inputted a wrong Pokemon name. Please try again.')
-        }
-
-    } else {
-        alert('Error: You have inputted a wrong Pokemon name. Please try again.')
-    }
-}
 
 export default function ApiQuery() {
     const [query, setQuery] = useState('')
@@ -36,28 +13,15 @@ export default function ApiQuery() {
     const [accessToken, setAccessToken] = useState('')
     const [albums, setAlbums] = useState([])
 
-    const CLIENT_ID = ''
-    const CLIENT_SECRET = ''
-
     const handleChange = (e) => {
         setQuery(e.target.value)
     }
 
     const getSpotifyAccessToken = async () => {
-        var authParameters = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: 'grant_type=client_credentials&client_id=' + CLIENT_ID + '&client_secret=' + CLIENT_SECRET
-
-        }
-
-        fetch('https://accounts.spotify.com/api/token', authParameters)
-            .then(res => res.json())
-            .then(data => setAccessToken(data.access_token))
+        const response = await fetch(`${expressport}/api/getSpotifyAccessToken`);
+        const data = await response.json();
+        setAccessToken(data.access_token);
     }
-
 
 
     const handleSubmit = async (e) => {
@@ -100,7 +64,6 @@ export default function ApiQuery() {
 
     }
 
-
     useEffect(() => {
         getSpotifyAccessToken()
         console.log(accessToken)
@@ -123,8 +86,10 @@ export default function ApiQuery() {
                 <TextField id="standard-basic" label="Pokemon Name" />
                 <Button type="submit" variant="contained" >Submit</Button>
             </Box>
+            {artist && <h1 className="text-3xl font-bold text-center mb-8">We turned {query} into ...</h1>}
 
             <div className="grid grid-cols-3 gap-4 ">
+
                 {albums.map((album, index) => (
                     <Cards key={index} name={album.name} url={album.images[0].url} link={album.external_urls.spotify} releaseDate={album.release_date} />
                 ))}
