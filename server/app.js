@@ -1,7 +1,9 @@
 const express = require("express");
 const axios = require('axios');
 const cors = require('cors');
+const mongoose = require("mongoose");
 const { pokemonTypes, pokemonRap, genreToArtists } = require('./global.js')
+const accRouter = require("./AccRoutes");
 
 const app = express();
 app.use(cors());
@@ -72,6 +74,23 @@ app.post("/api/pokemonQuery", function async(req, res) {
 
 })
 
+// URI for the database
+const uri = "mongodb+srv://dcui:Cs411@cluster0.ic6sx27.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+// Function that connects to the database
+async function connect() {
+  try{
+    await mongoose.connect(uri);
+    console.log("Connected to MongoDB");
+    // Stored database in var db
+    const db = mongoose.connection;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// connect with db
+connect();
+//app.use("/api/accounts", accRouter);
 
 // Starting the server. Should this be placed at the top of all other commands?
 app.listen(3000, function () {
