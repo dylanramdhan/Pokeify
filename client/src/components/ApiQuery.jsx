@@ -18,7 +18,9 @@ export default function ApiQuery() {
     }
 
     const getSpotifyAccessToken = async () => {
-        const response = await fetch(`${expressport}/api/getSpotifyAccessToken`);
+        const response = await fetch(`${expressport}/api/getSpotifyAccessToken`, {
+            method: 'POST',
+        });
         const data = await response.json();
         setAccessToken(data.access_token);
     }
@@ -33,6 +35,31 @@ export default function ApiQuery() {
             search()
         } catch (e) {
             console.error(e)
+        }
+    }
+
+    async function getArtistInfo(artist) {
+        const searchParameters = {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer your_access_token_here'
+            }
+        };
+
+        const response = await fetch('https://api.spotify.com/v1/search?q=' + artist + '&type=artist', searchParameters);
+        const data = await response.json();
+
+        if (data.artists.items.length > 0) {
+            const artistData = data.artists.items[0];
+            const artistInfo = {
+                id: artistData.id,
+                name: artistData.name,
+                link: artistData.external_urls.spotify,
+                genres: artistData.genres
+            };
+            return artistInfo;
+        } else {
+            throw new Error('Artist not found');
         }
     }
 
@@ -64,10 +91,15 @@ export default function ApiQuery() {
 
     }
 
+
     useEffect(() => {
         getSpotifyAccessToken()
         console.log(accessToken)
     }, [])
+
+    useEffect(() => {
+        console.log(accessToken)
+    }, [accessToken])
 
 
     return (

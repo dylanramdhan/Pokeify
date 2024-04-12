@@ -3,11 +3,8 @@ const cors = require('cors');
 const { pokemonTypes, pokemonRap, genreToArtists } = require('./global.js')
 require('dotenv').config();
 
-
-
 const app = express();
 app.use(cors());
-
 // Middleware to parse JSON bodies
 app.use(express.json({ limit: '10mb' }));
 // Middleware to parse URL-encoded bodies
@@ -36,10 +33,16 @@ app.post('/api/getSpotifyAccessToken', async (req, res) => {
     };
 
     const response = await fetch('https://accounts.spotify.com/api/token', authParameters);
-    const data = await response.json();
+    if (response.ok) {
+      const data = await response.json();
+      // Send the access token in the response
+      res.json({ access_token: data.access_token });
 
-    // Send the access token in the response
-    res.json({ access_token: data.access_token });
+    } else {
+      throw new Error('Error: Could not get access token')
+    }
+
+
   } catch (error) {
     // Handle errors
     console.error('Error occurred:', error);
