@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    background-image: url(https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXpjOXU2am9qNXlsbjdhOGZib21tcWNqa3p5cGk0ZHUybnRrMmtjOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/0QoSCsfdDG9WBXWUSh/source.gif)
+  }
