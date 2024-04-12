@@ -2,61 +2,28 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useEffect, useState } from 'react';
-import { pokemonQueryUrl, expressport } from '../utilities/global';
+import Cards from './Cards';
+import { getPokemontoArtist, expressport } from '../utilities/global';
 
 
-const getPokemontoArtist = async (query) => {
-    const res = await fetch(pokemonQueryUrl + query)
-    if (res.ok) {
-        const data = await res.json()
-        // pass the data to the backend for manipulation 
-        const spotifyRes = await fetch(`${expressport}/api/pokemonQuery`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-
-        if (spotifyRes.ok) {
-            const spotifyData = await spotifyRes.json()
-            return spotifyData.artist
-        } else {
-            alert('Error: You have inputted a wrong Pokemon name. Please try again.')
-        }
-
-    } else {
-        alert('Error: You have inputted a wrong Pokemon name. Please try again.')
-    }
-}
 
 export default function ApiQuery() {
     const [query, setQuery] = useState('')
     const [artist, setArtist] = useState('')
     const [accessToken, setAccessToken] = useState('')
-
-    const CLIENT_ID = ''
-    const CLIENT_SECRET = 'd38e056805f24b1e98a8aefa639ab94b'
+    const [albums, setAlbums] = useState([])
 
     const handleChange = (e) => {
         setQuery(e.target.value)
     }
 
     const getSpotifyAccessToken = async () => {
-        var authParameters = {
+        const response = await fetch(`${expressport}/api/getSpotifyAccessToken`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: 'grant_type=client_credentials&client_id=' + CLIENT_ID + '&client_secret=' + CLIENT_SECRET
-
-        }
-
-        fetch('https://accounts.spotify.com/api/token', authParameters)
-            .then(res => res.json())
-            .then(data => setAccessToken(data.access_token))
+        });
+        const data = await response.json();
+        setAccessToken(data.access_token);
     }
-
 
 
     const handleSubmit = async (e) => {
@@ -65,15 +32,74 @@ export default function ApiQuery() {
             const getArtist = await getPokemontoArtist(query)
             setArtist(getArtist)
             console.log(getArtist)
+            search()
         } catch (e) {
             console.error(e)
         }
     }
 
+    async function getArtistInfo(artist) {
+        const searchParameters = {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer your_access_token_here'
+            }
+        };
+
+        const response = await fetch('https://api.spotify.com/v1/search?q=' + artist + '&type=artist', searchParameters);
+        const data = await response.json();
+
+        if (data.artists.items.length > 0) {
+            const artistData = data.artists.items[0];
+            const artistInfo = {
+                id: artistData.id,
+                name: artistData.name,
+                link: artistData.external_urls.spotify,
+                genres: artistData.genres
+            };
+            return artistInfo;
+        } else {
+            throw new Error('Artist not found');
+        }
+    }
+
+    async function search() {
+        var searchParameters = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                "authorization": "Bearer " + accessToken
+
+            }
+        }
+
+        var ArtistID = await fetch('https://api.spotify.com/v1/search?q=' + artist + '&type=artist', searchParameters)
+            .then(res => res.json())
+            .then(data => { return data.artists.items[0].id })
+
+        console.log(ArtistID)
+
+        var returnedAlbums = await fetch('https://api.spotify.com/v1/artists/' + ArtistID + '/albums' + '?include_groups=album&market=US&limit=50', searchParameters)
+            .then(res => res.json())
+            .then(
+                data => {
+                    console.log(data)
+                    setAlbums(data.items);
+
+                }
+            )
+
+    }
+
+
     useEffect(() => {
         getSpotifyAccessToken()
         console.log(accessToken)
     }, [])
+
+    useEffect(() => {
+        console.log(accessToken)
+    }, [accessToken])
 
 
     return (
@@ -87,10 +113,19 @@ export default function ApiQuery() {
                 autoComplete="off"
                 onSubmit={handleSubmit}
                 onChange={handleChange}
+                className="flex justify-center mb-5"
             >
-                <TextField id="standard-basic" label="Standard" variant="standard" />
-                <Button type="submit" variant="contained" >Text</Button>
+                <TextField id="standard-basic" label="Pokemon Name" />
+                <Button type="submit" variant="contained" >Submit</Button>
             </Box>
+            {artist && <h1 className="text-3xl font-bold text-center mb-8">We turned {query} into ...</h1>}
+
+            <div className="grid grid-cols-3 gap-4 ">
+
+                {albums.map((album, index) => (
+                    <Cards key={index} name={album.name} url={album.images[0].url} link={album.external_urls.spotify} releaseDate={album.release_date} />
+                ))}
+            </div>
 
         </div>
     )
