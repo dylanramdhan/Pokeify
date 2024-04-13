@@ -115,7 +115,7 @@ export default function ApiQuery() {
                 onChange={handleChange}
                 className="flex justify-center mb-5"
             >
-                <TextField id="standard-basic" label="Pokemon Name" />
+                <TextField id="standard-basic" label="Pokemon Name" className="bg-white"/>
                 <Button type="submit" variant="contained" >Submit</Button>
             </Box>
             {artist && <h1 className="text-3xl font-bold text-center mb-8">We turned {query} into ...</h1>}
