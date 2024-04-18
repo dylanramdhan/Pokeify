@@ -118,7 +118,7 @@ export default function ApiQuery() {
                 autoComplete="off"
                 onSubmit={handleSubmit}
                 onChange={handleChange}
-                className="flex justify-center mb-2"
+                className="flex justify-center mb-5"
             >
                 <TextField id="standard-basic" label="Pokemon Name" className="bg-white"/>
                 <Button type="submit" variant="contained" >Submit</Button>
@@ -126,11 +126,13 @@ export default function ApiQuery() {
             {artist && <h1 className="text-3xl text-center italic">We turned {query.toUpperCase()} into ...</h1>}
             {artist && <div class=" flex items-center justify-center"> <img src={image2}/> </div>}
 
-            <div className="grid grid-cols-3 gap-4 ">
+            <div class="w-1/2 p-4 mx-auto text-center border">
+            <div className="grid grid-cols-3 gap-4">
 
                 {albums.map((album, index) => (
                     <Cards key={index} name={album.name} url={album.images[0].url} link={album.external_urls.spotify} releaseDate={album.release_date} />
                 ))}
+            </div>
             </div>
 
         </div>
