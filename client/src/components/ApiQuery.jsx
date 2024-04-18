@@ -30,7 +30,7 @@ export default function ApiQuery() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const stuff = await getPokemontoArtist(query)
+            const stuff = await getPokemontoArtist(query.toLowerCase().replace(/\s/g, ''))
             const getArtist = stuff[0]
             const getImage = stuff[1]
             setImage(getImage)
