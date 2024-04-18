@@ -33,9 +33,9 @@ app.post('/api/getSpotifyAccessToken', async (req, res) => {
     };
 
     const response = await fetch('https://accounts.spotify.com/api/token', authParameters);
+
     if (response.ok) {
       const data = await response.json();
-      // Send the access token in the response
       res.json({ access_token: data.access_token });
 
     } else {
