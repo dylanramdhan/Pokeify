@@ -7,6 +7,8 @@ export const getPokemontoArtist = async (query) => {
     const res = await fetch(pokemonQueryUrl + query)
     if (res.ok) {
         const data = await res.json()
+        const image = data.sprites.front_default
+        //console.log(image)
         // pass the data to the backend for manipulation 
         const spotifyRes = await fetch(`${expressport}/api/pokemonQuery`, {
             method: 'POST',
@@ -18,7 +20,7 @@ export const getPokemontoArtist = async (query) => {
 
         if (spotifyRes.ok) {
             const spotifyData = await spotifyRes.json()
-            return spotifyData.artist
+            return [spotifyData.artist, image]
         } else {
             alert('Error: You have inputted a wrong Pokemon name. Please try again.')
         }

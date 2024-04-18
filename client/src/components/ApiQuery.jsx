@@ -12,6 +12,7 @@ export default function ApiQuery() {
     const [artist, setArtist] = useState('')
     const [accessToken, setAccessToken] = useState('')
     const [albums, setAlbums] = useState([])
+    const [image2, setImage] = useState('')
 
     const handleChange = (e) => {
         setQuery(e.target.value)
@@ -29,9 +30,13 @@ export default function ApiQuery() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const getArtist = await getPokemontoArtist(query)
+            const stuff = await getPokemontoArtist(query)
+            const getArtist = stuff[0]
+            const getImage = stuff[1]
+            setImage(getImage)
             setArtist(getArtist)
             console.log(getArtist)
+            console.log(getImage)
             search()
         } catch (e) {
             console.error(e)
@@ -113,12 +118,13 @@ export default function ApiQuery() {
                 autoComplete="off"
                 onSubmit={handleSubmit}
                 onChange={handleChange}
-                className="flex justify-center mb-5"
+                className="flex justify-center mb-2"
             >
                 <TextField id="standard-basic" label="Pokemon Name" className="bg-white"/>
                 <Button type="submit" variant="contained" >Submit</Button>
             </Box>
-            {artist && <h1 className="text-3xl font-bold text-center mb-8">We turned {query} into ...</h1>}
+            {artist && <h1 className="text-3xl text-center italic">We turned {query.toUpperCase()} into ...</h1>}
+            {artist && <div class=" flex items-center justify-center"> <img src={image2}/> </div>}
 
             <div className="grid grid-cols-3 gap-4 ">
 
