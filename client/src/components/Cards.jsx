@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 export default function Cards({ name, url, link, releaseDate }) {
     return (
         <a href={link} className="block mb-10">
-            <Card sx={{ maxWidth: 350 }} className="rounded-3xl overflow-hidden transition duration-300 transform hover:scale-105">
+            <Card className="flexrounded-3xl overflow-hidden transition duration-300 transform hover:scale-105">
                 <CardMedia
                     sx={{ height: 350 }}
                     image={url}
@@ -25,7 +25,7 @@ export default function Cards({ name, url, link, releaseDate }) {
                     </Typography>
                 </CardContent>
                 <CardActions className="flex justify-center">
-                    <Button size="small" href={link} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                    <Button size="small" href={link} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 rounded">
                         Go to Album
                     </Button>
                 </CardActions>
