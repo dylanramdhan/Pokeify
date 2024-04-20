@@ -1,14 +1,27 @@
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
+import { expressport } from "../utilities/global"
 
 
 export default function LoginPage() {
 
     const [user, setUser] = useState({})
     /* once we log in, we have user info */
-    function handleCallbackResponse(response) {
+    async function handleCallbackResponse(response) {
         console.log("JWT ID token" + response.credential)
         var userObject = jwtDecode(response.credential)
+
+        const bodyres = await fetch(`${expressport}/database/postUser`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userObject)
+        })
+
+
+
+
         console.log(userObject)
         setUser(userObject)
         document.getElementById('askSignIn').hidden = true;

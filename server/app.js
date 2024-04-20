@@ -27,6 +27,7 @@ connectToMongo();
 
 '---'
 
+// to create a new user in the database 
 app.post('/database/postUser', async (req, res) => {
   try {
     const user = req.body;
@@ -35,12 +36,11 @@ app.post('/database/postUser', async (req, res) => {
     // Check if the user with the provided email already exists
     const existingUser = await User.findOne({ email: user.email });
     if (existingUser) {
-      // If user already exists, send a conflict response
+
       console.log('User with email already exists');
       return res.status(409).json({ error: 'User with email already exists' });
     }
 
-    // If user doesn't exist, create a new user
     await User.create(user);
 
     console.log('User created successfully')

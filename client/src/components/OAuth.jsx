@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from 'react-router-dom';
+import { expressport } from "../utilities/global"
 
 
 
@@ -10,9 +11,17 @@ export default function OAuth() {
     const navigate = useNavigate()
 
     /* once we log in, we have user info */
-    function handleCallbackResponse(response) {
+    async function handleCallbackResponse(response) {
         var userObject = jwtDecode(response.credential)
         console.log(userObject)
+        const bodyres = await fetch(`${expressport}/database/postUser`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userObject)
+        })
+
         setUser(userObject)
         document.getElementById('askSignIn').hidden = true;
         navigate('/user');
