@@ -38,7 +38,8 @@ Pokéify is your go-to spot for finding new artists and Pokémons! This developm
     On another terminal, run the following commands:\
       &nbsp;&nbsp;&nbsp;&nbsp; *cd server*\
       &nbsp;&nbsp;&nbsp;&nbsp; *nodemon app.js*
-<br> 
+<br>
+
 ### Obtaining Credentials
 **Note:** To enable backend functionality, you need to authenticate the Spotify API by replacing CLIENT_ID and CLIENT_SECRET with your own credentials in the *.env* file.\
 Follow these steps to do so:
