@@ -11,7 +11,10 @@
 </p>
 
 ## Description
-Who's that Pokemon? Is it Pikachu? Is it Charizard? Is it Squirtel? Oh wow, it's _**Pokeify**_!! In the Pokeify, you can easily find your favorite type of Pokemon, and favorite playlists of music that you may like!
+Who's that Pokémon? Is it Pikachu? Is it Charizard? Is it Squirtel? Oh no way, it's _**Pokéify**_!!
+
+
+Pokéify is your go-to spot for finding new artists and Pokémons! This development this web-based idea came to us as we were listening to music and enjoying the fun reminiscences of Pokémon. In our design of Pokéify is the development of a web-based application that allows users to search any of their favorite Pokémons, and find any sort of related musics and artists towards the Pokémon's element.
 
 
 ## Contributing Members
