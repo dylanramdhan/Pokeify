@@ -52,3 +52,5 @@ Follow these steps to do so:
   * Save the *.env* file after updating the credentials.
 
 ## Resources
+[PokéAPI](https://pokeapi.co/)
+[Spotify API](https://developer.spotify.com/documentation/web-api)
