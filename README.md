@@ -24,6 +24,7 @@ Pokéify is your go-to spot for finding new artists and Pokémons! This developm
 - Wai Lun Mak (angusmak@bu.edu)
 
 ## How To Launch
+### Running the Program
 1. **Clone the Repository**
   * Start a new terminal and run the following commands:\
       &nbsp;&nbsp;&nbsp;&nbsp; *git clone*\
@@ -41,6 +42,7 @@ Pokéify is your go-to spot for finding new artists and Pokémons! This developm
 **Note:** To enable backend functionality, you need to authenticate the Spotify API by replacing CLIENT_ID and CLIENT_SECRET with your own credentials in the *.env* file.\
 Follow these steps to do so:
 
+#### Obtaining Credentials
 1. **Obtain Spotify API Credentials**
   * Visit the Spotify Developer Dashboard:\
    &nbsp;&nbsp;&nbsp;&nbsp; *https://developer.spotify.com/dashboard*
