@@ -42,7 +42,7 @@ Pokéify is your go-to spot for finding new artists and Pokémons! This developm
 <br>  
 
 ### Obtaining Credentials
-<br>**Note:** To enable backend functionality, you need to authenticate the Spotify API by replacing CLIENT_ID and CLIENT_SECRET with your own credentials in the *.env* file.\
+**Note:** To enable backend functionality, you need to authenticate the Spotify API by replacing CLIENT_ID and CLIENT_SECRET with your own credentials in the *.env* file.\
 Follow these steps to do so:
 
 1. **Obtain Spotify API Credentials**
