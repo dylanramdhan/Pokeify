@@ -16,8 +16,7 @@ Who's that Pokémon? Is it Pikachu? Is it Charizard? Is it Squirtel? Oh no way, 
 
 Pokéify is your go-to spot for finding new artists and Pokémons! This development of the idea came to us as we were listening to music and enjoying the fun reminiscences of Pokémon. In the design of Pokéify, it is the development of a web-based application that allows users to search any of their favorite Pokémon, and find an assortment of related musics and artists that relatively relate towards the Pokémon's element.
 
-<br>
-Check out this cool (Demo)[https://youtu.be/ukunLyZXL2Q] video!
+Check out this cool [Demo](https://youtu.be/ukunLyZXL2Q) video!
 
 ## Contributing Members
 - Jason Jiang (jx3onj@bu.edu)
