@@ -20,7 +20,7 @@ Check out this cool video for our demo by clicking on the picture or the youtube
 
 [![Video](https://img.youtube.com/vi/l9bkcwpdcmM/0.jpg)](https://www.youtube.com/watch?v=l9bkcwpdcmM)
 
-[Link to Video](https://www.youtube.com/watch?v=l9bkcwpdcmM)
+
 
 ## Contributing Members
 - Jason Jiang (jx3onj@bu.edu)
