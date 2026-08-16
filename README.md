@@ -1,4 +1,4 @@
-# Pokeify
+# Pokéify
 
 
 <p align="center">
